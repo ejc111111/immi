@@ -1,0 +1,49 @@
+/* ── MoodPicker ── */
+
+.mp {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.mp__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-2);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid rgba(196, 149, 106, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-quick),
+    background var(--transition-quick),
+    transform var(--transition-quick);
+}
+
+.mp__item:active {
+  transform: scale(0.95);
+}
+
+.mp__item--selected {
+  border-color: var(--ember-500);
+  background: var(--ember-100);
+}
+
+.mp__emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.mp__label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--bark-500);
+  letter-spacing: 0.02em;
+}
+
+.mp__item--selected .mp__label {
+  color: var(--ember-500);
+}

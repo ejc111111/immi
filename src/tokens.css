@@ -1,0 +1,42 @@
+/* ── Immi Design Tokens ── */
+
+:root {
+  /* Color — Bark */
+  --bark-900: #1C1208;
+  --bark-500: #7A5030;
+  --bark-300: #C4956A;
+  --bark-50:  #FAF5EE;
+
+  /* Color — Ember */
+  --ember-500: #C8703A;
+  --ember-400: #E8916A;
+  --ember-100: #FDF3EC;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Instrument Sans', system-ui, sans-serif;
+
+  /* Border Radius */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-pill: 100px;
+
+  /* Spacing */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Transitions */
+  --transition-instant: 80ms ease;
+  --transition-quick:   180ms ease;
+  --transition-gentle:  280ms ease;
+  --transition-breath:  2.2s ease-in-out;
+}

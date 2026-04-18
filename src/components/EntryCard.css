@@ -1,0 +1,94 @@
+/* ── EntryCard ── */
+
+.ec {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.97);
+  border: 1.5px solid rgba(196, 149, 106, 0.18);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 10px rgba(28, 18, 8, 0.06);
+}
+
+/* ── Top row ── */
+
+.ec__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ec__date {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--bark-300);
+  letter-spacing: 0.04em;
+}
+
+.ec__emoji {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* ── Quote ── */
+
+.ec__quote {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bark-900);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Optional note ── */
+
+.ec__note {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--bark-500);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Footer ── */
+
+.ec__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-1);
+}
+
+.ec__footer-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ec__mood-tag {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ember-500);
+  background: var(--ember-100);
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+
+.ec__first-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--bark-300);
+}
+
+.ec__voice {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--bark-300);
+  letter-spacing: 0.02em;
+}

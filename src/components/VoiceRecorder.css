@@ -1,0 +1,133 @@
+/* ── VoiceRecorder ── */
+
+.vr {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid rgba(196, 149, 106, 0.2);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-quick);
+}
+
+.vr--recording {
+  border-color: rgba(200, 112, 58, 0.35);
+}
+
+.vr__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.vr__title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bark-900);
+}
+
+.vr__subtitle {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--bark-500);
+  line-height: 1.5;
+}
+
+/* ── Controls row ── */
+
+.vr__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ── Mic button ── */
+
+.vr__mic {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bark-900);
+  border: none;
+  color: var(--bark-50);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background var(--transition-quick),
+    transform var(--transition-quick),
+    box-shadow var(--transition-quick);
+}
+
+.vr__mic svg {
+  width: 22px;
+  height: 22px;
+}
+
+.vr__mic--on {
+  background: #D63B3B;
+  animation: micPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(214, 59, 59, 0.5); }
+  50%       { box-shadow: 0 0 0 10px rgba(214, 59, 59, 0); }
+}
+
+.vr__mic:active {
+  transform: scale(0.92);
+}
+
+/* ── Viz area ── */
+
+.vr__viz {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 44px;
+  justify-content: center;
+}
+
+.vr__idle-hint {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--bark-300);
+}
+
+/* ── Waveform ── */
+
+.vr__bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 28px;
+}
+
+.vr__bar {
+  display: block;
+  width: 3px;
+  min-height: 4px;
+  background: var(--ember-400);
+  border-radius: 2px;
+  animation: wave 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  from { height: 4px;  opacity: 0.5; }
+  to   { height: 24px; opacity: 1;   }
+}
+
+/* ── Timer ── */
+
+.vr__timer {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: #D63B3B;
+  letter-spacing: 0.06em;
+}
