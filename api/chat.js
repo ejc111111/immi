@@ -1,7 +1,8 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
 
-  const { message } = req.body
+  const { messages, message } = req.body
+  const apiMessages = messages || [{ role: 'user', content: message }]
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -30,7 +31,7 @@ Response format:
 - You may gently note that others in the community have felt similarly, but never use it to minimise
 - Speak warmly, honestly, and unhurriedly
 - End with a gentle open question that invites the user to continue if they want to, but never pressures them`,
-      messages: [{ role: 'user', content: message }]
+      messages: apiMessages
     })
   })
 

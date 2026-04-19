@@ -13,13 +13,19 @@ export default function Onboard5() {
   const [elapsed, setElapsed] = useState(0)
   const [hasVoice, setHasVoice] = useState(false)
   const [phase, setPhase] = useState('input') // 'input' | 'chat'
-  const [immiReply, setImmiReply] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [messages, setMessages] = useState([]) // [{role:'user'|'immi', content, loading?}]
+  const [chatInput, setChatInput] = useState('')
+  const [isSending, setIsSending] = useState(false)
 
   const mediaRecorderRef = useRef(null)
   const timerRef = useRef(null)
+  const chatEndRef = useRef(null)
 
   const canSave = hasVoice || text.trim().length > 0
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   async function startRecording() {
     try {
@@ -50,21 +56,54 @@ export default function Onboard5() {
   const ss = String(elapsed % 60).padStart(2, '0')
   const userMessage = text.trim() || '🎙 Voice note'
 
-  async function handleSave() {
-    setPhase('chat')
-    setLoading(true)
+  async function callAPI(apiMessages) {
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage })
+        body: JSON.stringify({ messages: apiMessages })
       })
       const data = await res.json()
-      setImmiReply(data.reply || FALLBACK)
+      return data.reply || FALLBACK
     } catch {
-      setImmiReply(FALLBACK)
-    } finally {
-      setLoading(false)
+      return FALLBACK
+    }
+  }
+
+  async function handleSave() {
+    setPhase('chat')
+    const userMsg = { role: 'user', content: userMessage }
+    setMessages([userMsg, { role: 'immi', content: '', loading: true }])
+    const reply = await callAPI([{ role: 'user', content: userMessage }])
+    setMessages([userMsg, { role: 'immi', content: reply }])
+  }
+
+  async function handleSend() {
+    const input = chatInput.trim()
+    if (!input || isSending) return
+    setChatInput('')
+    setIsSending(true)
+
+    const newUserMsg = { role: 'user', content: input }
+    setMessages(prev => [...prev, newUserMsg, { role: 'immi', content: '', loading: true }])
+
+    const apiMessages = [...messages, newUserMsg]
+      .filter(m => !m.loading)
+      .map(m => ({ role: m.role === 'immi' ? 'assistant' : 'user', content: m.content }))
+
+    const reply = await callAPI(apiMessages)
+    setMessages(prev => {
+      const updated = [...prev]
+      updated[updated.length - 1] = { role: 'immi', content: reply }
+      return updated
+    })
+    setIsSending(false)
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSend()
     }
   }
 
@@ -163,39 +202,65 @@ export default function Onboard5() {
             </>
           ) : (
             <div className="ob5__chat">
-              {/* User bubble */}
-              <div className="ob5__chat-user">
-                <div className="ob5__bubble ob5__bubble--user">{userMessage}</div>
-              </div>
-
-              {/* Immi response */}
-              <div className="ob5__chat-immi">
-                <div className="ob5__immi-label">
-                  <div className="ob5__avatar" aria-hidden="true">I</div>
-                  <span className="ob5__immi-name">Immi</span>
-                </div>
-                <div className="ob5__bubble ob5__bubble--immi">
-                  {loading ? (
-                    <span className="ob5__typing" aria-label="Immi is responding">
-                      <span /><span /><span />
-                    </span>
-                  ) : immiReply}
-                </div>
-              </div>
-
-              <div className="ob5__footer">
-                <button
-                  className="ob5__cta"
-                  onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })}
-                >
-                  Continue
-                </button>
-              </div>
+              {messages.map((msg, i) =>
+                msg.role === 'user' ? (
+                  <div key={i} className="ob5__chat-user">
+                    <div className="ob5__bubble ob5__bubble--user">{msg.content}</div>
+                  </div>
+                ) : (
+                  <div key={i} className="ob5__chat-immi">
+                    <div className="ob5__immi-label">
+                      <div className="ob5__avatar" aria-hidden="true">I</div>
+                      <span className="ob5__immi-name">Immi</span>
+                    </div>
+                    <div className="ob5__bubble ob5__bubble--immi">
+                      {msg.loading ? (
+                        <span className="ob5__typing" aria-label="Immi is responding">
+                          <span /><span /><span />
+                        </span>
+                      ) : msg.content}
+                    </div>
+                  </div>
+                )
+              )}
+              <div ref={chatEndRef} className="ob5__chat-end" />
             </div>
           )}
 
         </div>
       </div>
+
+      {phase === 'chat' && (
+        <div className="ob5__chatbar-wrap">
+          <button
+            className="ob5__save-link"
+            onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })}
+          >
+            save entry for now
+          </button>
+          <div className="ob5__chatbar">
+            <button className="ob5__chatbar-mic" aria-label="Record voice message">
+              <MicIcon />
+            </button>
+            <input
+              className="ob5__chatbar-input"
+              type="text"
+              placeholder="say anything…"
+              value={chatInput}
+              onChange={e => setChatInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button
+              className="ob5__chatbar-send"
+              onClick={handleSend}
+              disabled={!chatInput.trim() || isSending}
+              aria-label="Send message"
+            >
+              <SendIcon />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -216,6 +281,15 @@ function PencilIcon() {
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function SendIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
