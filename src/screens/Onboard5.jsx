@@ -131,11 +131,11 @@ export default function Onboard5() {
 
       {phase === 'chat' && (
         <div className="ob5__topbar">
-          <button className="ob5__topbar-wordmark" onClick={() => navigate('/diary')}>Immi</button>
-          <span className="ob5__topbar-date">{dateLabel}</span>
           <button className="ob5__topbar-save" onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })}>
             save entry
           </button>
+          <span className="ob5__topbar-date">{dateLabel}</span>
+          <button className="ob5__topbar-wordmark" onClick={() => navigate('/diary')}>Immi</button>
         </div>
       )}
 
