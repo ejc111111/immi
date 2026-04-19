@@ -57,15 +57,23 @@ export default function Onboard5() {
   const userMessage = text.trim() || '🎙 Voice note'
 
   async function callAPI(apiMessages) {
+    console.log('[callAPI] fetching /api/chat with', apiMessages.length, 'message(s)')
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: apiMessages })
       })
+      console.log('[callAPI] response status:', res.status)
       const data = await res.json()
+      console.log('[callAPI] response body:', data)
+      if (!res.ok) {
+        console.error('[callAPI] non-OK response:', data)
+        return FALLBACK
+      }
       return data.reply || FALLBACK
-    } catch {
+    } catch (err) {
+      console.error('[callAPI] fetch error:', err)
       return FALLBACK
     }
   }
