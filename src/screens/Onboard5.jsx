@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './Onboard5.css'
 
 const BAR_COUNT = 12
-const IMMI_RESPONSE = "7 others nearby felt something similar this week. Getting through another day in a new place is its own kind of hard — and you did it. That feeling of isolation is real. Starting over somewhere new is not easy, and it doesn't have to be."
+const FALLBACK = "Thank you for sharing that. You don't have to have it all figured out — being here is enough."
 
 export default function Onboard5() {
   const navigate = useNavigate()
@@ -13,6 +13,8 @@ export default function Onboard5() {
   const [elapsed, setElapsed] = useState(0)
   const [hasVoice, setHasVoice] = useState(false)
   const [phase, setPhase] = useState('input') // 'input' | 'chat'
+  const [immiReply, setImmiReply] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const mediaRecorderRef = useRef(null)
   const timerRef = useRef(null)
@@ -47,6 +49,24 @@ export default function Onboard5() {
   const mm = String(Math.floor(elapsed / 60)).padStart(2, '0')
   const ss = String(elapsed % 60).padStart(2, '0')
   const userMessage = text.trim() || '🎙 Voice note'
+
+  async function handleSave() {
+    setPhase('chat')
+    setLoading(true)
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
+      })
+      const data = await res.json()
+      setImmiReply(data.reply || FALLBACK)
+    } catch {
+      setImmiReply(FALLBACK)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="ob5">
@@ -136,7 +156,7 @@ export default function Onboard5() {
               </div>
 
               <div className="ob5__footer">
-                <button className="ob5__cta" disabled={!canSave} onClick={() => setPhase('chat')}>
+                <button className="ob5__cta" disabled={!canSave} onClick={handleSave}>
                   Save
                 </button>
               </div>
@@ -154,7 +174,13 @@ export default function Onboard5() {
                   <div className="ob5__avatar" aria-hidden="true">I</div>
                   <span className="ob5__immi-name">Immi</span>
                 </div>
-                <div className="ob5__bubble ob5__bubble--immi">{IMMI_RESPONSE}</div>
+                <div className="ob5__bubble ob5__bubble--immi">
+                  {loading ? (
+                    <span className="ob5__typing" aria-label="Immi is responding">
+                      <span /><span /><span />
+                    </span>
+                  ) : immiReply}
+                </div>
               </div>
 
               <div className="ob5__footer">
