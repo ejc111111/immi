@@ -4,6 +4,7 @@ import './tokens.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Splash from './screens/Splash'
 import Onboard1 from './screens/Onboard1'
+import Intro from './screens/Intro'
 import Onboard2 from './screens/Onboard2'
 import Onboard3 from './screens/Onboard3'
 import Onboard4 from './screens/Onboard4'
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/" element={<Splash />} />
         <Route path="/onboard" element={<Onboard1 />} />
         <Route path="/onboard/1" element={<Onboard1 />} />
+        <Route path="/intro" element={<Intro />} />
         <Route path="/onboard2" element={<Onboard2 />} />
         <Route path="/onboard/2" element={<Onboard2 />} />
         <Route path="/onboard3" element={<Onboard3 />} />

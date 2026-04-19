@@ -29,8 +29,7 @@ export default function Onboard1() {
       <div className="ob1__body">
         <p className="ob1__eyebrow">Immi</p>
         <h1 className="ob1__heading">
-          A quiet place<br />
-          <em>to be heard</em>
+          For immigrants. For the feelings that don't travel well.
         </h1>
         <p className="ob1__copy">
           For feelings too heavy to keep in.
@@ -39,7 +38,7 @@ export default function Onboard1() {
 
       {/* Bottom actions */}
       <div className="ob1__footer">
-        <button className="ob1__cta" onClick={() => navigate('/onboard/2')}>
+        <button className="ob1__cta" onClick={() => navigate('/intro')}>
           Begin
         </button>
         <p className="ob1__hint">Your entries are private. No names required.</p>

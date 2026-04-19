@@ -65,7 +65,7 @@ export default function Onboard5() {
             <>
               <div className="ob5__header">
                 <h1 className="ob5__heading">What brought you here today?</h1>
-                <p className="ob5__subtext">Be as specific or vague as you like. This is for you alone.</p>
+                <p className="ob5__subtext">You can record a voice note, write a few thoughts, or both. Writing is optional.</p>
               </div>
 
               <div className={`ob5__tiles${activeTile ? ' ob5__tiles--has-active' : ''}`}>

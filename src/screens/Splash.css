@@ -134,8 +134,9 @@
   font-size: 10px;
   font-weight: 400;
   color: var(--bark-300);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-align: center;
   margin: 0;
 }
 
