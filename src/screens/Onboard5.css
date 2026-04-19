@@ -5,6 +5,9 @@
   inset: 0;
   background: linear-gradient(172deg, #FDF6EE 0%, #F5E8D6 52%, #EDCFAD 100%);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ob5__grain {
@@ -20,11 +23,11 @@
 .ob5__scroll {
   position: relative;
   z-index: 1;
-  height: 100%;
+  flex: 1;
+  width: 100%;
+  max-width: 390px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  display: flex;
-  justify-content: center;
 }
 
 .ob5__content {
@@ -39,10 +42,7 @@
 /* ── Chat topbar ── */
 
 .ob5__topbar {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  flex-shrink: 0;
   width: 100%;
   max-width: 390px;
   padding: 12px 24px;
@@ -98,7 +98,7 @@
 /* ── Content — chat mode padding override ── */
 
 .ob5__content--chat {
-  padding-top: 72px;
+  padding-top: var(--space-5);
 }
 
 /* ── Header ── */
@@ -438,19 +438,17 @@
 /* ── Chat end spacer ── */
 
 .ob5__chat-end {
-  height: 96px;
+  height: 16px;
 }
 
 /* ── Chat bar ── */
 
 .ob5__chatbar-wrap {
-  position: fixed;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
+  flex-shrink: 0;
   width: 100%;
   max-width: 390px;
   padding: var(--space-3) 28px;
+  margin-bottom: 32px;
   background: rgba(253, 246, 238, 0.96);
   backdrop-filter: blur(10px);
   display: flex;
