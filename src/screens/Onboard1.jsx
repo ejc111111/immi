@@ -28,9 +28,10 @@ export default function Onboard1() {
       {/* Top content */}
       <div className="ob1__body">
         <p className="ob1__eyebrow">Immi</p>
-        <h1 className="ob1__heading">
-          For immigrants.<br />For the feelings that don't travel well.
-        </h1>
+        <div className="ob1__tagline">
+          <h1 className="ob1__heading">For immigrants.</h1>
+          <p className="ob1__tagline-sub">For the feelings that don't travel well.</p>
+        </div>
       </div>
 
       {/* Bottom actions */}

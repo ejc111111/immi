@@ -30,10 +30,7 @@ export default function Intro() {
 
         <div className="intro__footer">
           <button className="intro__cta" onClick={() => navigate('/onboard2')}>
-            This is for me
-          </button>
-          <button className="intro__ghost" onClick={() => navigate('/onboard2')}>
-            Just exploring
+            Got it
           </button>
         </div>
       </div>

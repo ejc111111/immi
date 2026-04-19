@@ -57,10 +57,11 @@
 }
 
 .ob5__topbar-wordmark {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 18px;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--ember-500);
   background: none;
   border: none;
@@ -81,18 +82,21 @@
 }
 
 .ob5__topbar-save {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   background: var(--bark-900);
-  color: var(--bark-50);
   border: none;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 500;
-  padding: 6px 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: opacity var(--transition-quick);
 }
 
+.ob5__topbar-save svg { width: 13px; height: 13px; }
 .ob5__topbar-save:active { opacity: 0.82; }
 
 /* ── Content — chat mode padding override ── */
@@ -133,6 +137,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-3);
+  width: 100%;
+  box-sizing: border-box;
   animation: fadeUp 0.6s 0.24s ease both;
 }
 
@@ -150,6 +156,8 @@
     background var(--transition-quick),
     opacity var(--transition-quick);
   overflow: hidden;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .ob5__tile--active {
@@ -302,7 +310,7 @@
   outline: none;
   resize: none;
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.7;
   color: var(--bark-900);
   box-sizing: border-box;
@@ -360,6 +368,7 @@
 .ob5__bubble--user {
   background: var(--bark-900);
   color: var(--bark-50);
+  margin-left: auto;
   animation: fadeUp 0.4s 0.05s ease both;
 }
 
@@ -400,6 +409,7 @@
   color: var(--bark-900);
   border: 1.5px solid rgba(196, 149, 106, 0.18);
   box-shadow: 0 2px 8px rgba(28, 18, 8, 0.05);
+  margin-right: auto;
 }
 
 /* ── Keyframes ── */
@@ -447,8 +457,7 @@
   flex-shrink: 0;
   width: 100%;
   max-width: 390px;
-  padding: var(--space-3) 28px;
-  margin-bottom: 32px;
+  padding: var(--space-3) 28px max(var(--space-4), env(safe-area-inset-bottom));
   background: rgba(253, 246, 238, 0.96);
   backdrop-filter: blur(10px);
   display: flex;
@@ -506,7 +515,7 @@
   padding: 0 var(--space-4);
   background: rgba(255, 255, 255, 0.8);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--bark-900);
   outline: none;
   -webkit-appearance: none;

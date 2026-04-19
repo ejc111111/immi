@@ -131,11 +131,11 @@ export default function Onboard5() {
 
       {phase === 'chat' && (
         <div className="ob5__topbar">
-          <button className="ob5__topbar-save" onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })}>
-            save entry
-          </button>
+          <button className="ob5__topbar-wordmark" onClick={() => navigate('/diary')}>IMMI</button>
           <span className="ob5__topbar-date">{dateLabel}</span>
-          <button className="ob5__topbar-wordmark" onClick={() => navigate('/diary')}>Immi</button>
+          <button className="ob5__topbar-save" onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })} aria-label="Save entry">
+            <BookmarkIcon />
+          </button>
         </div>
       )}
 
@@ -303,6 +303,14 @@ function SendIcon() {
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function BookmarkIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
