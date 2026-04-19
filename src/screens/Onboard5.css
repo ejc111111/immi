@@ -29,7 +29,7 @@
 
 .ob5__content {
   width: 100%;
-  max-width: 375px;
+  max-width: 390px;
   padding: var(--space-12) var(--space-6) max(var(--space-8), env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 375px;
+  max-width: 390px;
   padding: 12px 24px;
   display: flex;
   align-items: center;
@@ -449,7 +449,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 375px;
+  max-width: 390px;
   padding: var(--space-3) 28px;
   background: rgba(253, 246, 238, 0.96);
   backdrop-filter: blur(10px);

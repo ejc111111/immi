@@ -27,7 +27,7 @@
 
 .com__content {
   width: 100%;
-  max-width: 375px;
+  max-width: 390px;
   padding: var(--space-12) var(--space-6) 100px;
   display: flex;
   flex-direction: column;

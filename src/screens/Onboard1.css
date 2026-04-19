@@ -109,7 +109,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 375px;
+  max-width: 390px;
   padding: var(--space-16) var(--space-6) var(--space-8);
   gap: var(--space-5);
 }
@@ -155,7 +155,7 @@
 .ob1__footer {
   position: relative;
   width: 100%;
-  max-width: 375px;
+  max-width: 390px;
   display: flex;
   flex-direction: column;
   align-items: center;
