@@ -36,6 +36,71 @@
   gap: var(--space-6);
 }
 
+/* ── Chat topbar ── */
+
+.ob5__topbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 375px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: var(--border);
+  backdrop-filter: blur(10px);
+  z-index: 20;
+  animation: fadeUp 0.3s ease both;
+}
+
+.ob5__topbar-wordmark {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ember-500);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.ob5__topbar-date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bark-500);
+  white-space: nowrap;
+}
+
+.ob5__topbar-save {
+  background: var(--bark-900);
+  color: var(--bark-50);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: opacity var(--transition-quick);
+}
+
+.ob5__topbar-save:active { opacity: 0.82; }
+
+/* ── Content — chat mode padding override ── */
+
+.ob5__content--chat {
+  padding-top: 72px;
+}
+
 /* ── Header ── */
 
 .ob5__header {
@@ -289,7 +354,7 @@
   line-height: 1.65;
   border-radius: var(--radius-lg);
   padding: var(--space-4) var(--space-5);
-  max-width: 85%;
+  max-width: 75%;
 }
 
 .ob5__bubble--user {
@@ -326,10 +391,8 @@
 
 .ob5__immi-name {
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--bark-500);
-  letter-spacing: 0.04em;
+  font-size: 10px;
+  color: var(--bark-300);
 }
 
 .ob5__bubble--immi {
@@ -382,17 +445,16 @@
 
 .ob5__chatbar-wrap {
   position: fixed;
-  bottom: 0;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 375px;
-  padding: var(--space-2) var(--space-4) max(var(--space-4), env(safe-area-inset-bottom));
+  padding: var(--space-3) 28px;
   background: rgba(253, 246, 238, 0.96);
-  border-top: 1px solid rgba(196, 149, 106, 0.15);
   backdrop-filter: blur(10px);
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: var(--space-2);
   z-index: 10;
   animation: fadeUp 0.3s ease both;

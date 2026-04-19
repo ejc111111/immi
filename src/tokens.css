@@ -34,6 +34,9 @@
   --space-12: 48px;
   --space-16: 64px;
 
+  /* Border */
+  --border: 1px solid rgba(196, 149, 106, 0.15);
+
   /* Transitions */
   --transition-instant: 80ms ease;
   --transition-quick:   180ms ease;

@@ -4,6 +4,7 @@ import './Onboard5.css'
 
 const BAR_COUNT = 12
 const FALLBACK = "Thank you for sharing that. You don't have to have it all figured out — being here is enough."
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
 export default function Onboard5() {
   const navigate = useNavigate()
@@ -55,6 +56,9 @@ export default function Onboard5() {
   const mm = String(Math.floor(elapsed / 60)).padStart(2, '0')
   const ss = String(elapsed % 60).padStart(2, '0')
   const userMessage = text.trim() || '🎙 Voice note'
+
+  const _d = new Date()
+  const dateLabel = `${_d.getDate()} ${MONTHS[_d.getMonth()]} · diary entry`
 
   async function callAPI(apiMessages) {
     console.log('[callAPI] fetching /api/chat with', apiMessages.length, 'message(s)')
@@ -125,8 +129,18 @@ export default function Onboard5() {
         <rect width="100%" height="100%" filter="url(#grain5)" />
       </svg>
 
+      {phase === 'chat' && (
+        <div className="ob5__topbar">
+          <button className="ob5__topbar-wordmark" onClick={() => navigate('/diary')}>Immi</button>
+          <span className="ob5__topbar-date">{dateLabel}</span>
+          <button className="ob5__topbar-save" onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })}>
+            save entry
+          </button>
+        </div>
+      )}
+
       <div className="ob5__scroll">
-        <div className="ob5__content">
+        <div className={`ob5__content${phase === 'chat' ? ' ob5__content--chat' : ''}`}>
 
           {phase === 'input' ? (
             <>
@@ -217,10 +231,9 @@ export default function Onboard5() {
                   </div>
                 ) : (
                   <div key={i} className="ob5__chat-immi">
-                    <div className="ob5__immi-label">
-                      <div className="ob5__avatar" aria-hidden="true">I</div>
+                    {!messages.slice(0, i).some(m => m.role === 'immi') && (
                       <span className="ob5__immi-name">Immi</span>
-                    </div>
+                    )}
                     <div className="ob5__bubble ob5__bubble--immi">
                       {msg.loading ? (
                         <span className="ob5__typing" aria-label="Immi is responding">
@@ -240,33 +253,25 @@ export default function Onboard5() {
 
       {phase === 'chat' && (
         <div className="ob5__chatbar-wrap">
-          <button
-            className="ob5__save-link"
-            onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })}
-          >
-            save entry for now
+          <button className="ob5__chatbar-mic" aria-label="Record voice message">
+            <MicIcon />
           </button>
-          <div className="ob5__chatbar">
-            <button className="ob5__chatbar-mic" aria-label="Record voice message">
-              <MicIcon />
-            </button>
-            <input
-              className="ob5__chatbar-input"
-              type="text"
-              placeholder="say anything…"
-              value={chatInput}
-              onChange={e => setChatInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-            />
-            <button
-              className="ob5__chatbar-send"
-              onClick={handleSend}
-              disabled={!chatInput.trim() || isSending}
-              aria-label="Send message"
-            >
-              <SendIcon />
-            </button>
-          </div>
+          <input
+            className="ob5__chatbar-input"
+            type="text"
+            placeholder="say anything…"
+            value={chatInput}
+            onChange={e => setChatInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+          <button
+            className="ob5__chatbar-send"
+            onClick={handleSend}
+            disabled={!chatInput.trim() || isSending}
+            aria-label="Send message"
+          >
+            <SendIcon />
+          </button>
         </div>
       )}
     </div>
