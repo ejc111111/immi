@@ -29,11 +29,8 @@ export default function Onboard1() {
       <div className="ob1__body">
         <p className="ob1__eyebrow">Immi</p>
         <h1 className="ob1__heading">
-          For immigrants. For the feelings that don't travel well.
+          For immigrants.<br />For the feelings that don't travel well.
         </h1>
-        <p className="ob1__copy">
-          For feelings too heavy to keep in.
-        </p>
       </div>
 
       {/* Bottom actions */}
