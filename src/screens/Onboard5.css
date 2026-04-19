@@ -33,7 +33,7 @@
 .ob5__content {
   width: 100%;
   max-width: 390px;
-  padding: var(--space-12) var(--space-6) max(var(--space-8), env(safe-area-inset-bottom));
+  padding: var(--space-12) 28px max(var(--space-8), env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
@@ -121,6 +121,9 @@
   line-height: 1.25;
   color: var(--bark-900);
   margin: 0;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .ob5__subtext {
