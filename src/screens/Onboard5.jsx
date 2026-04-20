@@ -134,7 +134,7 @@ export default function Onboard5() {
           <button className="ob5__topbar-wordmark" onClick={() => navigate('/diary')}>IMMI</button>
           <span className="ob5__topbar-date">{dateLabel}</span>
           <button className="ob5__topbar-save" onClick={() => navigate('/celebrate', { state: { mood: 'okay' } })} aria-label="Save entry">
-            <BookmarkIcon />
+            <SaveIcon />
           </button>
         </div>
       )}
@@ -145,8 +145,8 @@ export default function Onboard5() {
           {phase === 'input' ? (
             <>
               <div className="ob5__header">
-                <h1 className="ob5__heading">What brought you here today?</h1>
-                <p className="ob5__subtext">You can record a voice note, write a few thoughts, or both. Writing is optional.</p>
+                <h1 className="ob5__heading" style={{ textAlign: 'center' }}>What brought you here today?</h1>
+                <p className="ob5__subtext" style={{ textAlign: 'center' }}>You can record a voice note, write a few thoughts, or both. Writing is optional.</p>
               </div>
 
               <div className={`ob5__tiles${activeTile ? ' ob5__tiles--has-active' : ''}`}>
@@ -307,10 +307,12 @@ function SendIcon() {
   )
 }
 
-function BookmarkIcon() {
+function SaveIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="12" height="12" rx="1.5" />
+      <rect x="5" y="2" width="6" height="4" rx="0.5" />
+      <rect x="4" y="9" width="8" height="5" rx="0.5" />
     </svg>
   )
 }

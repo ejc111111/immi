@@ -16,14 +16,14 @@ export default function Intro() {
       </svg>
 
       <div className="intro__content">
-        <p className="intro__eyebrow">Immi</p>
+        <p className="intro__eyebrow" style={{ textAlign: 'center' }}>Immi</p>
         <h1 className="intro__heading">Made for the immigrant experience</h1>
 
         <div className="intro__body">
-          <p>
+          <p style={{ textAlign: 'center' }}>
             Immi is a space built for immigrants — for the specific loneliness of being far from home, navigating a new place, and not quite having the words for how that feels.
           </p>
-          <p>
+          <p style={{ textAlign: 'center' }}>
             This is not a therapy app. We don't give advice or offer solutions. We just listen.
           </p>
         </div>

@@ -52,7 +52,7 @@ export default function DiaryHome() {
 
             {/* Empty state */}
             <div className="dh__empty">
-              <p className="dh__empty-text">
+              <p className="dh__empty-text" style={{ textAlign: 'center' }}>
                 Your next entry is waiting. Come back when you're ready.
               </p>
             </div>

@@ -19,7 +19,7 @@ export default function Onboard2() {
 
       <div className="ob2__content">
         <h1 className="ob2__heading">Your space starts here</h1>
-        <p className="ob2__body">
+        <p className="ob2__body" style={{ textAlign: 'center' }}>
           Sign in to keep everything private<br />across your devices.
         </p>
 
@@ -59,7 +59,7 @@ export default function Onboard2() {
           </button>
         </div>
 
-        <p className="ob2__note">Your name is optional. We won't ask.</p>
+        <p className="ob2__note" style={{ textAlign: 'center' }}>Your name is optional. We won't ask.</p>
       </div>
     </div>
   )

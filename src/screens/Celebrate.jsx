@@ -39,8 +39,8 @@ export default function Celebrate() {
         {/* Text */}
         <div className="cel__text">
           <h1 className="cel__heading">You showed up for yourself.</h1>
-          <p className="cel__body">Things change with time — and so will you.</p>
-          <p className="cel__sub">
+          <p className="cel__body" style={{ textAlign: 'center' }}>Things change with time — and so will you.</p>
+          <p className="cel__sub" style={{ textAlign: 'center' }}>
             Come back whenever you need to. One day you'll look back and see how far you've come.
           </p>
         </div>

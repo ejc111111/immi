@@ -20,7 +20,7 @@ export default function Splash() {
       <div className="splash__content">
         <h1 className="splash__wordmark">Immi</h1>
         <div className="splash__rule" />
-        <p className="splash__tagline">For immigrants.<br />For the feelings that don't travel well.</p>
+        <p className="splash__tagline" style={{ textAlign: 'center' }}>For immigrants.<br />For the feelings that don't travel well.</p>
         <div className="splash__dot" />
       </div>
     </div>

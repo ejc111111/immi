@@ -46,7 +46,7 @@ export default function Onboard4() {
       <div className="ob4__content">
         <div className="ob4__top">
           <h1 className="ob4__heading">How would you like to use Immi?</h1>
-          <p className="ob4__body">You can switch this at any time.</p>
+          <p className="ob4__body" style={{ textAlign: 'center' }}>You can switch this at any time.</p>
         </div>
 
         <div className="ob4__cards">
@@ -63,7 +63,7 @@ export default function Onboard4() {
           ))}
         </div>
 
-        <p className="ob4__hint">You can switch this at any time</p>
+        <p className="ob4__hint" style={{ textAlign: 'center' }}>You can switch this at any time</p>
       </div>
     </div>
   )

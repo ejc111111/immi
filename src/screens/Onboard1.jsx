@@ -27,7 +27,7 @@ export default function Onboard1() {
 
       {/* Top content */}
       <div className="ob1__body">
-        <p className="ob1__eyebrow">Immi</p>
+        <p className="ob1__eyebrow" style={{ textAlign: 'center' }}>Immi</p>
         <div className="ob1__tagline">
           <h1 className="ob1__heading">For immigrants.</h1>
           <p className="ob1__tagline-sub">For the feelings that don't travel well.</p>
@@ -39,7 +39,7 @@ export default function Onboard1() {
         <button className="ob1__cta" onClick={() => navigate('/intro')}>
           Begin
         </button>
-        <p className="ob1__hint">Your entries are private. No names required.</p>
+        <p className="ob1__hint" style={{ textAlign: 'center' }}>Your entries are private. No names required.</p>
       </div>
     </div>
   )

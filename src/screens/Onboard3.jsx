@@ -33,7 +33,7 @@ export default function Onboard3() {
       <div className="ob3__content">
         <div className="ob3__top">
           <h1 className="ob3__heading">Before we begin</h1>
-          <p className="ob3__body">A few things worth knowing.</p>
+          <p className="ob3__body" style={{ textAlign: 'center' }}>A few things worth knowing.</p>
         </div>
 
         <div className="ob3__card">

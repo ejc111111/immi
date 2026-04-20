@@ -58,6 +58,7 @@
   color: var(--bark-500);
   line-height: 1.7;
   margin: 0;
+  text-align: center;
 }
 
 /* ── Feed ── */

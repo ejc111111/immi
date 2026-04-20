@@ -44,7 +44,7 @@ export default function Community() {
 
           <div className="com__header">
             <h1 className="com__heading">Here's what people in your community are saying</h1>
-            <p className="com__subtitle">
+            <p className="com__subtitle" style={{ textAlign: 'center' }}>
               Share your experience — there are no wrong answers. No judgement here. Just people who get it.
             </p>
           </div>
