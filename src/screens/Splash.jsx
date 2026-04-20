@@ -11,7 +11,7 @@ export default function Splash() {
   }, [navigate])
 
   return (
-    <div className="splash">
+    <div className="splash" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', padding: '0 28px', boxSizing: 'border-box' }}>
       <div className="splash__orb splash__orb--1" />
       <div className="splash__orb splash__orb--2" />
       <div className="splash__orb splash__orb--3" />

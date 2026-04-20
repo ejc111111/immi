@@ -5,7 +5,7 @@ export default function Intro() {
   const navigate = useNavigate()
 
   return (
-    <div className="intro">
+    <div className="intro" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', padding: '0 28px', boxSizing: 'border-box' }}>
       {/* Grain overlay */}
       <svg className="intro__grain" aria-hidden="true">
         <filter id="grain-intro">

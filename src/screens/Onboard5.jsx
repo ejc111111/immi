@@ -120,7 +120,7 @@ export default function Onboard5() {
   }
 
   return (
-    <div className="ob5">
+    <div className="ob5" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
       <svg className="ob5__grain" aria-hidden="true">
         <filter id="grain5">
           <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />

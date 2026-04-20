@@ -16,7 +16,7 @@ export default function Celebrate() {
   const emoji = MOOD_EMOJIS[state?.mood] ?? '🌱'
 
   return (
-    <div className="cel">
+    <div className="cel" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', padding: '0 28px', boxSizing: 'border-box' }}>
       {/* Grain overlay */}
       <svg className="cel__grain" aria-hidden="true">
         <filter id="grain-cel">

@@ -1,8 +1,7 @@
 /* ── Splash screen ── */
 
 .splash {
-  position: fixed;
-  inset: 0;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,8 +87,6 @@
   align-items: center;
   gap: var(--space-4);
   width: 100%;
-  max-width: 390px;
-  padding: 0 var(--space-8);
 }
 
 /* Staggered fade-ins */

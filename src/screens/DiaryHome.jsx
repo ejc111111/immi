@@ -16,7 +16,7 @@ export default function DiaryHome() {
   const navigate = useNavigate()
 
   return (
-    <div className="dh">
+    <div className="dh" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
       {/* Grain overlay */}
       <svg className="dh__grain" aria-hidden="true">
         <filter id="grain-dh">

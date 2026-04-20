@@ -29,7 +29,7 @@ const POSTS = [
 
 export default function Community() {
   return (
-    <div className="com">
+    <div className="com" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
       {/* Grain overlay */}
       <svg className="com__grain" aria-hidden="true">
         <filter id="grain-com">

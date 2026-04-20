@@ -7,7 +7,7 @@ export default function Onboard2() {
   const [email, setEmail] = useState('')
 
   return (
-    <div className="ob2">
+    <div className="ob2" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', padding: '0 28px', boxSizing: 'border-box' }}>
       {/* Grain overlay */}
       <svg className="ob2__grain" aria-hidden="true">
         <filter id="grain2">

@@ -1,10 +1,8 @@
 /* ── Community ── */
 
 .com {
-  position: fixed;
-  inset: 0;
+  position: relative;
   background: linear-gradient(172deg, #FDF6EE 0%, #F5E8D6 52%, #EDCFAD 100%);
-  overflow: hidden;
 }
 
 .com__grain {
@@ -18,17 +16,14 @@
 
 .com__scroll {
   position: relative;
-  height: 100%;
+  flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  display: flex;
-  justify-content: center;
 }
 
 .com__content {
   width: 100%;
-  max-width: 390px;
-  padding: var(--space-12) var(--space-6) 100px;
+  padding: var(--space-12) 28px 100px;
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
@@ -125,7 +120,7 @@
 /* ── Compose button ── */
 
 .com__compose {
-  position: fixed;
+  position: absolute;
   bottom: max(var(--space-8), env(safe-area-inset-bottom, var(--space-8)));
   right: var(--space-6);
   width: 56px;

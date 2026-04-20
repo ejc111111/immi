@@ -1,13 +1,11 @@
 /* ── Onboard 2 ── */
 
 .ob2 {
-  position: fixed;
-  inset: 0;
+  position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   background: linear-gradient(172deg, #FDF6EE 0%, #F5E8D6 52%, #EDCFAD 100%);
-  overflow: hidden;
 }
 
 /* ── Grain ── */
@@ -29,8 +27,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 390px;
-  padding: 0 var(--space-6);
   gap: var(--space-5);
   text-align: center;
 }

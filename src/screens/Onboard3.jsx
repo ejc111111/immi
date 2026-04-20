@@ -20,7 +20,7 @@ export default function Onboard3() {
   const navigate = useNavigate()
 
   return (
-    <div className="ob3">
+    <div className="ob3" style={{ minHeight: '100dvh', width: '100%', display: 'flex', flexDirection: 'column', padding: '0 28px', boxSizing: 'border-box' }}>
       {/* Grain overlay */}
       <svg className="ob3__grain" aria-hidden="true">
         <filter id="grain3">

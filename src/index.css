@@ -8,28 +8,23 @@ h1, h2, h3 {
 
 html {
   height: 100%;
-  background: #0f0a06;
+  height: -webkit-fill-available;
 }
 
 body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  width: 100%;
+  max-width: 430px;
   margin: 0 auto;
   padding: 0;
-  width: 390px;
-  max-width: 100%;
-  height: 100%;
   overflow-x: hidden;
 }
 
 #root {
-  position: relative;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  /*
-    Creates a containing block for position:fixed children.
-    Without this, fixed elements are viewport-relative and ignore
-    the 390px body width. With any transform on an ancestor,
-    browsers use that ancestor as the fixed element's containing block.
-  */
-  transform: translateZ(0);
+  display: flex;
+  flex-direction: column;
 }
