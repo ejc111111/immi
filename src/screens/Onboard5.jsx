@@ -9,7 +9,7 @@ const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov
 export default function Onboard5() {
   const navigate = useNavigate()
   const [activeTile, setActiveTile] = useState(null) // 'voice' | 'text'
-  const [text, setText] = useState('')
+  const [text, setText] = useState("I've been feeling like my experience feels so singular to me and no one else knows what's going on.")
   const [recording, setRecording] = useState(false)
   const [elapsed, setElapsed] = useState(0)
   const [hasVoice, setHasVoice] = useState(false)
